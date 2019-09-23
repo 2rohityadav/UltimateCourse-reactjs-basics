@@ -9,17 +9,22 @@
 
 <body>
     <div id=root></div>
-    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script crossorigin
+        src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin
+        src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
     <script type="text/babel">
         const root = document.getElementById('root');
         const button = <button type="button">Save</button>;
-        const articleHeading = React.createElement('h2', {}, 'My first blog post');
-        const paragraph = React.createElement('p', { className: 'text' }, 'This is the content of my post');
-        const article = React.createElement('article', {}, articleHeading, paragraph);
-        const mainHeading = React.createElement('h1', {}, 'My Blog');
-        const main = React.createElement('main', { id: "main" }, mainHeading, article);
+        const main = <React.Fragment>
+            <main id="main">
+                <h1>My Blog</h1>
+                <article>My first blog post</article>
+                <p className="text">This is the content of my post.</p>
+            </main>
+            <footer>Some footer text</footer>
+            </React.Fragment>;
         ReactDOM.render([main, button], root);
     </script>
 </body>
