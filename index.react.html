@@ -8,6 +8,7 @@
 </head>
 
 <body>
+    <input maxlength=10 readonly>
     <div id=root></div>
     <script crossorigin
         src="https://unpkg.com/react@16/umd/react.development.js"></script>
@@ -25,7 +26,12 @@
             </main>
             <footer>Some footer text</footer>
             </React.Fragment>;
-        ReactDOM.render([main, button], root);
+            const input = <React.Fragment>
+                <label htmlFor="hello">Label</label>
+                <label  htmlFor="hello"></label>
+                <input id="hello" maxlength="10" readOnly/>
+                </React.Fragment>;
+        ReactDOM.render([main, button, input], root);
     </script>
 </body>
 
