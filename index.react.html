@@ -17,21 +17,23 @@
     <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
     <script type="text/babel">
         const root = document.getElementById('root');
-        const button = <button type="button">Save</button>;
-        const main = <React.Fragment>
-            <main id="main">
-                <h1>My Blog</h1>
-                <article>My first blog post</article>
-                <p className="text">This is the content of my post.</p>
-            </main>
-            <footer>Some footer text</footer>
-            </React.Fragment>;
-            const input = <React.Fragment>
-                <label htmlFor="hello">Label</label>
-                <label  htmlFor="hello"></label>
-                <input id="hello" maxlength="10" readOnly/>
-                </React.Fragment>;
-        ReactDOM.render([main, button, input], root);
+        // const button = <button type="button">Save</button>;
+        // const main = <React.Fragment>
+        //     <main id="main">
+        //         <h1>My Blog</h1>
+        //         <article>My first blog post</article>
+        //         <p className="text">This is the content of my post.</p>
+        //     </main>
+        //     <footer>Some footer text</footer>
+        //     </React.Fragment>;
+        //     const input = <React.Fragment>
+        //         <label htmlFor="hello">Label</label>
+        //         <label  htmlFor="hello"></label>
+        //         <input id="hello" maxlength="10" readOnly/>
+        //         </React.Fragment>;
+        // ReactDOM.render([main, button, input], root);
+
+        ReactDOM.render([<h1 key="dominic" aria-hidden="true" aria-label="true" aria-describedby="root">Hello World</h1> ], root);
     </script>
 </body>
 
