@@ -16,19 +16,34 @@
         src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
     <script type="text/babel">
-        let count = 0;
-        const interval =setInterval(() => {
-           const paragraph = <p>{count}</p> 
-            ReactDOM.render(
-                paragraph,
-                root   
-            );
-            if(count === 90){
-                clearInterval(interval);
-            } else {
-                count++;
+        // const getFormattedText = string => /* html */`The count is: ${string}`;
+        // let count = 0;
+        // const interval =setInterval(() => {
+        //    const paragraph = <p>{getFormattedText(count)}</p> 
+        //     ReactDOM.render(
+        //         paragraph,
+        //         root   
+        //     );
+        //     if(count === 500){
+        //         clearInterval(interval);
+        //     } else {
+        //         count++;
+        //     }
+        // }, 30);
+        // const x = 10,
+        // y = 200,
+        // getValue = () => 'Function returned text',
+        // paragraph = <p>{10 * 200} -> {getValue()}</p>
+        // ReactDOM.render(paragraph, root);
+
+        const isError = Math.random() > 0.5;
+        const errorContainer = <div className={isError ? 'error': 'standard'}>
+            { isError 
+                ? (<p>Panic! Something went wrong!</p>)
+                : (<p>Stop panicking!</p>)
             }
-        }, 1000);
+            </div>;
+        ReactDOM.render(errorContainer, root);
     </script>
 </body>
 
