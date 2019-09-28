@@ -13,12 +13,19 @@
     <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
     <script type="text/babel">
-        const myCart = [];
-        const order = (cart, item) => cart.push(item);
-        order(myCart, 'videojs')
-        const calculate = (x,y) => x * y * 5;
-        const paragraph = <p key="randomParagraph">{JSON.stringify(myCart)}</p>;
-        ReactDOM.render([paragraph], root);
+        // const myCart = [];
+        // const order = (cart, item) => cart.push(item);
+        // order(myCart, 'videojs')
+        // const calculate = (x,y) => x * y * 5;
+        // const paragraph = <p key="randomParagraph">{JSON.stringify(myCart)}</p>;
+        const getText = name => `My name is ${name}`;
+        const calculate = (x,y) => x * y;
+        const getSetAction = name => ({type: 'SET_NAME', name});
+        const Paragraph = () => <p>{getText('djdj')}</p>
+        const container1 = <div key="container1"><Paragraph/></div>;
+        const container2 = <div key="container2">{calculate(10, 20)}</div>;
+        const container3 = <div key="container3">{JSON.stringify(getSetAction('djdj'))}</div>;
+        ReactDOM.render([container1, container2, container3], root);
     </script>
 </body>
 
