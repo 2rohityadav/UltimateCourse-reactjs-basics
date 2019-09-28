@@ -18,14 +18,28 @@
         // order(myCart, 'videojs')
         // const calculate = (x,y) => x * y * 5;
         // const paragraph = <p key="randomParagraph">{JSON.stringify(myCart)}</p>;
-        const getText = name => `My name is ${name}`;
-        const calculate = (x,y) => x * y;
-        const getSetAction = name => ({type: 'SET_NAME', name});
-        const Paragraph = () => <p>{getText('djdj')}</p>
-        const container1 = <div key="container1"><Paragraph/></div>;
-        const container2 = <div key="container2">{calculate(10, 20)}</div>;
-        const container3 = <div key="container3">{JSON.stringify(getSetAction('djdj'))}</div>;
-        ReactDOM.render([container1, container2, container3], root);
+        // const getText = name => `My name is ${name}`;
+        // const calculate = (x,y) => x * y;
+        // const getSetAction = name => ({type: 'SET_NAME', name});
+        // const Paragraph = ({text}) => <p>My name is {text}</p>
+        // const container1 = <div key="container1"><Paragraph text='djdj'/></div>;
+        // const container2 = <div key="container2">{calculate(10, 20)}</div>;
+        // const container3 = <div key="container3">{JSON.stringify(getSetAction('djdj'))}</div>;
+        // ReactDOM.render([container1, container2, container3], root);
+        const ErrorBlock = ({error}) => 
+            error.hasError ? <p>{error.message}</p>
+            : <p>Everything is just fine!</p>
+        ;
+        const error = {
+            hasError: Math.random() > 0.7,
+            message: 'O dear, run for the hills!'
+        }
+        const container = (
+            <div>
+                <ErrorBlock error={error}/>
+            </div>
+        );
+        ReactDOM.render(container, root);
     </script>
 </body>
 
