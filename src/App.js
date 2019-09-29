@@ -1,5 +1,9 @@
-import React from 'react';
+import React, {Fragment} from 'react';
+import Counter from './Counter';
 
-const App = () => <p>This is our app.</p>;
+const App = () => 
+    <Fragment>
+        <Counter/>
+    </Fragment>;
 
 export default App;
