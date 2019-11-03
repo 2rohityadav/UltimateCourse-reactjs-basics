@@ -9,6 +9,14 @@ const Counter = () => {
         document.title = `counter set to ${counter} |Ultimate Counter`
         console.log('title was set')
     }, [counter])
+
+    useEffect(() => {
+        const savedCounterValue = localStorage.getItem('ultimateCounter')
+        if (savedCounterValue != null) {
+            setCounter(parseInt(savedCounterValue, 10))
+        }
+    }, []);
+
     function onIncrementHandler() {
         setCounter(c => ++c);
     }
@@ -16,7 +24,11 @@ const Counter = () => {
     function onInternalCountClickHandler() {
         setInternalCount(c => c + 1);
     }
-    console.log('main render')
+
+    function onSaveClickHandler() {
+        localStorage.setItem('ultimateCounter', counter);
+    }
+
     return (
         <Fragment>
             <InteractiveView value={counter} onAction={onIncrementHandler}>
@@ -24,6 +36,9 @@ const Counter = () => {
             </InteractiveView>
             <button type="button" onClick={onInternalCountClickHandler}>
                 Increment Internal Count
+            </button>
+            <button type="button" onClick={onSaveClickHandler}>
+                Save Count value
             </button>
         </Fragment>
     );
