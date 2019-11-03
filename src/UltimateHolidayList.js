@@ -8,7 +8,7 @@ const list = [
 ],
     UltimateHolidayList = () => <section>
         <h1>Ultimate Holiday Destinations</h1>
-        <ul>{list}</ul>
+        <ul>{list.map((item, index) => <li key={index}>{item.name}</li>)}</ul>
     </section>;
 
-export default UltimateHolidayList;
+export default UltimateHolidayList; 
