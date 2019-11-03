@@ -1,6 +1,17 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import InteractiveView from './InteractiveView';
-
+function subscribe() {
+    console.log('subscribed');
+}
+function unsubscribe() {
+    console.log('unsubscribe');
+}
+function subscribeCount(counter) {
+    console.log(`Subscribed for ${counter}`)
+}
+function unsubscribeCount(counter) {
+    console.log(`Unsubscribed for ${counter}`)
+}
 const Counter = () => {
     const [counter, setCounter] = useState(0);
     const [internalCount, setInternalCount] = useState(0);
@@ -16,6 +27,16 @@ const Counter = () => {
             setCounter(parseInt(savedCounterValue, 10))
         }
     }, []);
+
+    useEffect(() => {
+        subscribe();
+        return unsubscribe;
+    }, [])
+
+    useEffect(() => {
+        subscribeCount(counter);
+        return () => unsubscribeCount(counter);
+    }, [counter])
 
     function onIncrementHandler() {
         setCounter(c => ++c);
