@@ -1,23 +1,20 @@
 import React from "react";
 import "./machine.scss";
 
-const OnMessage = () => <span>Machine is ON!</span>;
-const OffMessage = () => <span>Machine is OFF!</span>;
-
-const OnOff = ({ isOn }) => (isOn ? <OnMessage /> : <OffMessage />);
+const ErrorMessage = ({ showError }) => showError ? <span>Oh No I am broken!</span> : null;
 
 const UltimateMachine = () => {
-    const [isOn, setIsOn] = React.useState(false),
+    const [showError, setShowError] = React.useState(false),
         onClickHandler = () => {
-            setIsOn(i => !i);
+            setShowError(i => !i);
         };
 
     return (
         <section>
             <h1>The Ultimate Machine</h1>
-            {isOn ? <OnMessage /> : <OffMessage />}
-            <button type="button" onClick={onClickHandler} aria-pressed={isOn}>
-                On/Off
+            <ErrorMessage showError={showError} />
+            <button type="button" onClick={onClickHandler} aria-pressed={showError}>
+                ToggleError
             </button>
         </section>
     );
