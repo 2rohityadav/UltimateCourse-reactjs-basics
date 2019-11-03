@@ -12,17 +12,13 @@ const UltimateMachine = () => {
             setIsOn(i => !i);
         };
 
-    const getMessage = () => {
-        return isOn ? <OnMessage /> : <OffMessage />;
-    };
-
     return (
         <section>
             <h1>The Ultimate Machine</h1>
-            {getMessage()}
+            {isOn ? <OnMessage /> : <OffMessage />}
             <button type="button" onClick={onClickHandler} aria-pressed={isOn}>
                 On/Off
-      </button>
+            </button>
         </section>
     );
 };
