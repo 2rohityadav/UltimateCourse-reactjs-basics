@@ -36,7 +36,7 @@ const Counter = () => {
     useEffect(() => {
         subscribeCount(counter);
         return () => unsubscribeCount(counter);
-    }, [counter])
+    }, [counter, internalCount])
 
     function onIncrementHandler() {
         setCounter(c => ++c);

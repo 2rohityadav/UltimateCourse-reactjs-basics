@@ -4,6 +4,7 @@ import Random from "./Random";
 import UltimateHolidayList from "./UltimateHolidayList";
 import UltimateList from "./UltimateList";
 import UltimateMachine from "./UltimateMachine";
+import Stopwatch from "./StopWatch";
 
 const App = () => {
   const [show, setShow] = useState(true);
@@ -12,6 +13,7 @@ const App = () => {
   }
   return (
     <Fragment>
+      <Stopwatch />
       <UltimateList />
       <UltimateHolidayList />
       <UltimateMachine />
