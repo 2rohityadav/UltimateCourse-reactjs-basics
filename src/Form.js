@@ -12,14 +12,19 @@ const Form = () => {
             ...formState,
             [e.target.name]: e.target.value
         })
+    },
+    onSubmitHandler = e => {
+        console.log(formState, e);
+        e.preventDefault();
     }
     return (
-        <form>
+        <form onSubmit={onSubmitHandler}>
             <span>Your name is {formState.firstName} {formState.lastName}</span>
             <label htmlFor="firstName">First Name</label>
-            <input id="firstName" name='firstName' onChange={onChangeHandler} value={formState.firstName} />
+            <input required id="firstName" name='firstName' onChange={onChangeHandler} value={formState.firstName} />
             <label htmlFor="lastName">Last Name</label>
-            <input id="lastName" name='lastName' onChange={onChangeHandler} value={formState.lastName} />
+            <input required id="lastName" name='lastName' onChange={onChangeHandler} value={formState.lastName} />
+            <button type='submit'>Save</button>
         </form>
     )
 };
