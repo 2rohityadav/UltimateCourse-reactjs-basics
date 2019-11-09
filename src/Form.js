@@ -3,16 +3,23 @@ import React, { useState } from 'react';
 import './form.scss'
 
 const Form = () => {
-    const [firstName, setFirstName] = useState('');
+    const [formState, setFormState] = useState({
+        firstName: '',
+        lastName: ''
+    })
     const onChangeHandler = e => {
-        setFirstName(e.target.value);
-        console.log(e.target.value);
+        setFormState({
+            ...formState,
+            [e.target.name]: e.target.value
+        })
     }
     return (
         <form>
-            <label htmlFor="fname">First Name</label>
-            <input id="fname" onChange={onChangeHandler} value={firstName} />
-            <span>{firstName}</span>
+            <span>Your name is {formState.firstName} {formState.lastName}</span>
+            <label htmlFor="firstName">First Name</label>
+            <input id="firstName" name='firstName' onChange={onChangeHandler} value={formState.firstName} />
+            <label htmlFor="lastName">Last Name</label>
+            <input id="lastName" name='lastName' onChange={onChangeHandler} value={formState.lastName} />
         </form>
     )
 };
