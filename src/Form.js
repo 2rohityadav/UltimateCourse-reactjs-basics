@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-
-import './form.scss'
-
-const Form = () => {
-    const [formState, setFormState] = useState({
+import './form.scss';
+const initialState = {
         firstName: '',
         lastName: ''
-    })
+    }
+
+const Form = () => {
+    const [formState, setFormState] = useState(initialState)
     const onChangeHandler = e => {
         setFormState({
             ...formState,
@@ -16,6 +16,9 @@ const Form = () => {
     onSubmitHandler = e => {
         console.log(formState, e);
         e.preventDefault();
+    },
+    onClickHandler = e => {
+        setFormState(initialState)
     }
     return (
         <form onSubmit={onSubmitHandler}>
@@ -25,6 +28,7 @@ const Form = () => {
             <label htmlFor="lastName">Last Name</label>
             <input required id="lastName" name='lastName' onChange={onChangeHandler} value={formState.lastName} />
             <button type='submit'>Save</button>
+            <button type="button" onClick={onClickHandler}>Clear values</button>
         </form>
     )
 };
