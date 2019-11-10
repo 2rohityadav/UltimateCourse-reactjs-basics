@@ -8,7 +8,8 @@ const initialState = {
         agree: false,
         breakfast: false,
         lunch: false,
-        dinner: false
+        dinner: false,
+        shirtSize: ''
     };
 
 const Form = () => {
@@ -54,6 +55,15 @@ const Form = () => {
                 <label htmlFor="lunch">Lunch</label>
                 <input type="checkbox" id="dinner" name="dinner" onChange={onChangeHandler} checked={formState.dinner}/>
                 <label htmlFor="dinner">Dinner</label>
+            </fieldset>
+            <fieldset>
+                <legend>T-shirt size</legend>
+                <input type="radio" name="shirtSize" id="sizeS" value="s" onChange={onChangeHandler} checked={formState.shirtSize === 's'}/>
+                <label htmlFor="sizeS">Small</label>
+                <input type="radio" name="shirtSize" id="sizeM" value="m" onChange={onChangeHandler} checked={formState.shirtSize === 'm'}/>
+                <label htmlFor="sizeM">Medium</label>
+                <input type="radio" name="shirtSize" id="sizeL" value="l" onChange={onChangeHandler} checked={formState.shirtSize === 'l'}/>
+                <label htmlFor="sizeL">Large</label>
             </fieldset>
             <label htmlFor="agree">I agree to the Term of Services</label>
             <input type="checkbox" id="agree" name="agree" onChange={onChangeHandler} checked={formState.agree}/>
