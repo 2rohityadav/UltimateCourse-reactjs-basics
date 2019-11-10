@@ -5,7 +5,7 @@ import UltimateHolidayList from "./UltimateHolidayList";
 import UltimateList from "./UltimateList";
 import UltimateMachine from "./UltimateMachine";
 import Stopwatch from "./StopWatch";
-import Form from "./Form";
+import FormContainer from "./Form";
 
 const App = () => {
   // const [show, setShow] = useState(true);
@@ -14,7 +14,7 @@ const App = () => {
   // }
   return (
     <Fragment>
-      <Form />
+      <FormContainer />
       {/* <Stopwatch /> */}
       {/* <UltimateList /> */}
       {/* <UltimateHolidayList /> */}

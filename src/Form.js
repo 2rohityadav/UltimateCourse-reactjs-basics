@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import './form.scss';
 const initialState = {
         firstName: '',
@@ -10,24 +10,55 @@ const initialState = {
         lunch: false,
         dinner: false,
         shirtSize: ''
+    },
+    loadedState = {
+        agree: true,
+        biography: "Why does the world not care as much about climate?",
+        breakfast: true,
+        dinner: true,
+        firstName: "Cyrille",
+        lastName: "Djoko",
+        lunch: true,
+        shirtSize: "l",
+        transport: "trains",
     };
 
-const Form = () => {
+const FormContainer = () => {
+    const [data, setData] = useState(initialState);
+    const onSubmitHandler = formState => {
+            console.log(formState);
+            setData(formState);
+        },
+        onClickHandler = _ => {
+            setData(loadedState);
+        };
+    return (
+        <Fragment>
+            <Form onSubmit={onSubmitHandler} data={data}/>
+            <button type="button" onClick={onClickHandler}>Load Data</button>
+        </Fragment>
+    );
+};
+
+const Form = ({onSubmit, data}) => {
     const [formState, setFormState] = useState(initialState)
-    const onChangeHandler = e => {
-        const value = e.target.type === 'checkbox' ? e.target.checked: e.target.value;
-        setFormState({
-            ...formState,
-            [e.target.name]: value
-        });
-    },
-    onSubmitHandler = e => {
-        console.log(formState, e);
-        e.preventDefault();
-    },
-    onClickHandler = e => {
-        setFormState(initialState);
-    }
+        useEffect(() => {
+            setFormState(data)
+        }, [data])
+        const onChangeHandler = e => {
+            const value = e.target.type === 'checkbox' ? e.target.checked: e.target.value;
+            setFormState({
+                ...formState,
+                [e.target.name]: value
+            });
+        },
+        onSubmitHandler = e => {
+            e.preventDefault();
+            onSubmit(formState);
+        },
+        onClickHandler = e => {
+            setFormState(initialState);
+        }
     return (
         <form onSubmit={onSubmitHandler}>
             <span>Your name is {formState.firstName} {formState.lastName}</span>
@@ -73,4 +104,4 @@ const Form = () => {
     );
 };
 
-export default Form;
+export default FormContainer;
