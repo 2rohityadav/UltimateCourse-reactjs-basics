@@ -21,8 +21,11 @@ const sortEntry = (a,b) => {
 };
 const Container = () => {
     const [records, setRecords] = useState([]);
+    const [liveText, setLiveText] = useState('');
+
     function onSubmitHandler(entry){
         setRecords([...records, entry].sort(sortEntry));
+        setLiveText(`${entry.recordName} successfully added.`);
     }
     return (
         <Fragment>
@@ -35,6 +38,7 @@ const Container = () => {
                     <List records={records} />
                 </Section>
             </main>
+            <div className="visually-hidden" aria-live="polite" aria-atomic="true">{liveText}</div>
         </Fragment>
     )
 };
