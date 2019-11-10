@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import RecordInput from './RecordInput'
 const initialEntryState = {
     recordName: '',
     artistName: '',
@@ -20,12 +21,9 @@ const RecordForm = ({onSubmit}) => {
         })
     }
     return <form onSubmit={onSubmitHandler}>
-        <label htmlFor="recordName">Record Name</label>
-        <input type="text" onChange={onChangeHandler} value={entry.recordName} name="recordName" id="recordName"/>
-        <label htmlFor="artistName">Artist Name</label>
-        <input type="text" onChange={onChangeHandler} value={entry.artistName} name="artistName" id="artistName"/>
-        <label htmlFor="description">Description</label>
-        <textarea name="description" onChange={onChangeHandler} value={entry.description} id="description" rows="10"></textarea>
+        <RecordInput labelText="Record Name" onChange={onChangeHandler} value={entry.recordName} name="recordName"/>
+        <RecordInput labelText="Artist Name" onChange={onChangeHandler} value={entry.artistName} name="artistName"/>
+        <RecordInput type="textarea" labelText="Description" onChange={onChangeHandler} value={entry.description} name="description" rows="10"/>
         <button type="submit">Add</button>
     </form>
 }
