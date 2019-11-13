@@ -1,9 +1,10 @@
-import React, {Fragment, useState} from 'react'
+import React, { Fragment, useState, useEffect } from 'react'
 import Header from './Header'
 import Section from './Section'
 import List from './List'
 import "./records.scss"
 import RecordForm from './RecordForm'
+import axios from 'axios';
 const recordsData = [
     {
         recordName: 'React Rave',
@@ -16,14 +17,21 @@ const recordsData = [
         description: 'Sounds of the future.'
     }
 ]
-const sortEntry = (a,b) => {
-            return a.recordName < b.recordName ? -1 : (a.recordName > b.recordName ? 1 : 0)
+const sortEntry = (a, b) => {
+    return a.recordName < b.recordName ? -1 : (a.recordName > b.recordName ? 1 : 0)
 };
 const Container = () => {
     const [records, setRecords] = useState([]);
     const [liveText, setLiveText] = useState('');
 
-    function onSubmitHandler(entry){
+    useEffect(() => {
+        axios.get('/api/records').then(({ data }) => {
+            console.log(data)
+            setRecords(data.sort(sortEntry))
+        })
+    }, [])
+
+    function onSubmitHandler(entry) {
         setRecords([...records, entry].sort(sortEntry));
         setLiveText(`${entry.recordName} successfully added.`);
     }
@@ -32,7 +40,7 @@ const Container = () => {
             <Header />
             <main>
                 <Section headingText="Add a new favourite">
-                    <RecordForm onSubmit={onSubmitHandler}/>
+                    <RecordForm onSubmit={onSubmitHandler} />
                 </Section>
                 <Section headingText="Records">
                     <List records={records} />
