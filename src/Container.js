@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect } from 'react'
+import React, { Fragment, useState, useEffect, useRef } from 'react'
 import Header from './Header'
 import Section from './Section'
 import List from './List'
@@ -20,22 +20,29 @@ const recordsData = [
 const sortEntry = (a, b) => {
     return a.recordName < b.recordName ? -1 : (a.recordName > b.recordName ? 1 : 0)
 };
-const Container = () => {
+const Container = ({ setShowApp }) => {
     const [records, setRecords] = useState([]);
     const [liveText, setLiveText] = useState('');
+    const isMounted = useRef(true);
 
     useEffect(() => {
         axios.get('/api/records').then(({ data }) => {
             console.log(data)
-            setRecords(data.sort(sortEntry))
+            if (isMounted.current) {
+                setRecords(data.sort(sortEntry))
+            }
         })
+        return () => { isMounted.current = false; }
     }, [])
 
     function onSubmitHandler(entry) {
         axios.post('/api/records', entry).then(({ data }) => {
-            setRecords([...records, data].sort(sortEntry));
-            setLiveText(`${entry.recordName} successfully added.`);
+            if (isMounted.current) {
+                setRecords([...records, data].sort(sortEntry));
+                setLiveText(`${entry.recordName} successfully added.`);
+            }
         });
+        setShowApp(false)
     }
     return (
         <Fragment>
@@ -53,4 +60,9 @@ const Container = () => {
     )
 };
 
-export default Container;
+const Wrapper = () => {
+    const [showApp, setShowApp] = useState(true);
+    return showApp && <Container setShowApp={setShowApp} />
+}
+
+export default Wrapper;
