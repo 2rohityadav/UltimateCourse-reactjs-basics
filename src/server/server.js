@@ -23,6 +23,17 @@ app.get('/api/records', (req, res) => {
     res.send(recordsData);
 });
 
+app.post('/api/records', (req, res) => {
+    const newRecord = {
+        ...req.body,
+        id: recordsData.reduce((acc, item) => {
+            return item.id > acc ? item.id : acc
+        }, 0) + 1
+    }
+    recordsData.push(newRecord);
+    res.send(newRecord);
+})
+
 app.listen(port, () => {
     console.log(`Server is listening on ${port}`)
 })

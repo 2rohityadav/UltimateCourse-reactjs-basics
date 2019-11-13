@@ -32,8 +32,10 @@ const Container = () => {
     }, [])
 
     function onSubmitHandler(entry) {
-        setRecords([...records, entry].sort(sortEntry));
-        setLiveText(`${entry.recordName} successfully added.`);
+        axios.post('/api/records', entry).then(({ data }) => {
+            setRecords([...records, data].sort(sortEntry));
+            setLiveText(`${entry.recordName} successfully added.`);
+        });
     }
     return (
         <Fragment>
