@@ -26,23 +26,26 @@ const Container = ({ setShowApp }) => {
     const isMounted = useRef(true);
 
     useEffect(() => {
-        axios.get('/api/records').then(({ data }) => {
+        async function fetchData() {
+            const { data } = await axios.get('/api/records');
             console.log(data)
             if (isMounted.current) {
                 setRecords(data.sort(sortEntry))
             }
-        })
+        }
+
+        fetchData();
+
         return () => { isMounted.current = false; }
     }, [])
 
-    function onSubmitHandler(entry) {
-        axios.post('/api/records', entry).then(({ data }) => {
-            if (isMounted.current) {
-                setRecords([...records, data].sort(sortEntry));
-                setLiveText(`${entry.recordName} successfully added.`);
-            }
-        });
-        setShowApp(false)
+    async function onSubmitHandler(entry) {
+        const { data } = await axios.post('/api/records', entry)
+        if (isMounted.current) {
+            setRecords([...records, data].sort(sortEntry));
+            setLiveText(`${entry.recordName} successfully added.`);
+        }
+        // setShowApp(false)
     }
     return (
         <Fragment>
