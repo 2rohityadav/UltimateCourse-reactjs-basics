@@ -27,7 +27,12 @@ const Container = ({ setShowApp }) => {
 
     useEffect(() => {
         async function fetchData() {
-            const { data } = await axios.get('/api/records');
+            const { data } = await axios.get('/api/records', {
+                headers: {
+                    'Cache-control': 'private',
+                    'X-Custom-Header': 'some-value'
+                }
+            });
             console.log(data)
             if (isMounted.current) {
                 setRecords(data.sort(sortEntry))
