@@ -1,33 +1,40 @@
-import React, { Fragment, useState } from "react";
+import React, { useState } from "react";
+import { BrowserRouter, Route } from "react-router-dom";
+import About from "./About";
+import Container from "./Container";
 import Counter from "./Counter";
+import FormContainer from "./Form";
+import Home from "./Home";
 import Random from "./Random";
+import Stopwatch from "./StopWatch";
 import UltimateHolidayList from "./UltimateHolidayList";
 import UltimateList from "./UltimateList";
 import UltimateMachine from "./UltimateMachine";
-import Stopwatch from "./StopWatch";
-import FormContainer from "./Form";
-import Container from "./Container";
 
 const App = () => {
-  // const [show, setShow] = useState(true);
-  // const onClickHandler = () => {
-  //   setShow(s => !s);
-  // }
+  const [show, setShow] = useState(true);
+  const onClickHandler = () => {
+    setShow(s => !s);
+  };
   return (
-    <Fragment>
-      <Container />
-      {/* <FormContainer /> */}
-      {/* <Stopwatch /> */}
-      {/* <UltimateList /> */}
-      {/* <UltimateHolidayList /> */}
-      {/* <UltimateMachine /> */}
-      {/* {show && <Counter />} */}
-      {/* <button type="button" onClick={onClickHandler} aria-pressed={!show}>
-        Unmount Counter
-      </button> */}
-      {/* <Random /> */}
-    </Fragment>
-  )
+    <BrowserRouter>
+      <Route path="/" exact component={Home} />
+      <Route path="/about" component={About} />
+      <Route path="/container" exact component={Container} />
+      <Route path="/form-container" exact component={FormContainer} />
+      <Route path="/stop-watch" exact component={Stopwatch} />
+      <Route path="/list" exact component={UltimateList} />
+      <Route path="/holiday-list" exact component={UltimateHolidayList} />
+      <Route path="/machine" exact component={UltimateMachine} />
+      <Route path="/counter">
+        {show && <Counter />}
+        <button type="button" onClick={onClickHandler} aria-pressed={!show}>
+          Unmount Counter
+        </button>
+      </Route>
+      <Route path="/random" component={Random} />
+    </BrowserRouter>
+  );
 };
 
 export default App;
