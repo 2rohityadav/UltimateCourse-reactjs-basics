@@ -3,6 +3,7 @@ import { BrowserRouter, Route } from "react-router-dom";
 import About from "./About";
 import Container from "./Container";
 import Counter from "./Counter";
+import Footer from "./Footer";
 import FormContainer from "./Form";
 import Home from "./Home";
 import Random from "./Random";
@@ -33,6 +34,20 @@ const App = () => {
         </button>
       </Route>
       <Route path="/random" component={Random} />
+      <Footer
+        links={[
+          { path: "/", name: "Home" },
+          { path: "/about", name: "About" },
+          { path: "/container", name: "Container" },
+          { path: "/form-container", name: "Form Container" },
+          { path: "/stop-watch", name: "Stop watch" },
+          { path: "/list", name: "List" },
+          { path: "/holiday-list", name: "Holiday List" },
+          { path: "/machine", name: "Machine" },
+          { path: "/counter", name: "Counter" },
+          { path: "/random", name: "Random" }
+        ]}
+      />
     </BrowserRouter>
   );
 };
