@@ -1,10 +1,10 @@
-import React, { Fragment, useState, useEffect, useRef } from 'react'
+import axios from 'axios'
+import React, { Fragment, useEffect, useRef, useState } from 'react'
 import Header from './Header'
-import Section from './Section'
 import List from './List'
-import "./records.scss"
 import RecordForm from './RecordForm'
-import axios from 'axios';
+import "./records.scss"
+import Section from './Section'
 
 const sortEntry = (a, b) => {
     return a.recordName < b.recordName ? -1 : (a.recordName > b.recordName ? 1 : 0)

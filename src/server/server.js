@@ -17,11 +17,18 @@ let recordsData = [
         artistName: 'The Components',
         description: 'Sounds of the future.'
     }
-]
+],
+    weatherData = [
+        { city: 'Amsterdam', temp: 299.15 },
+        { city: 'Berlin', temp: 295.15 },
+        { city: 'Delhi', temp: 307.15 },
+        { city: 'Johannesburg', temp: 288.15 },
+        { city: 'London', temp: 294.15 },
+        { city: 'New York', temp: 301.15 },
+    ]
 
-app.get('/api/records', (req, res) => {
-    res.send(recordsData);
-});
+app.get('/api/records', (_, res) => res.send(recordsData));
+app.get('/api/weatherData', (_, res) => res.send(weatherData))
 
 app.post('/api/records', (req, res) => {
     const newRecord = {

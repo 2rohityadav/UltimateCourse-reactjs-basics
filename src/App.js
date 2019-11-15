@@ -11,6 +11,7 @@ import Stopwatch from "./StopWatch";
 import UltimateHolidayList from "./UltimateHolidayList";
 import UltimateList from "./UltimateList";
 import UltimateMachine from "./UltimateMachine";
+import Report from "./Report";
 
 const App = () => {
   const [show, setShow] = useState(true);
@@ -21,6 +22,7 @@ const App = () => {
     <BrowserRouter>
       <Route path="/" exact component={Home} />
       <Route path="/about" component={About} />
+      <Route path="/reports/:scale" component={Report} />
       <Route path="/container" exact component={Container} />
       <Route path="/form-container" exact component={FormContainer} />
       <Route path="/stop-watch" exact component={Stopwatch} />
