@@ -1,5 +1,6 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { weatherData } from "./weatherData";
+import Section from "./Section";
 
 const Report = ({ match }) => {
   const { scale } = match.params;
@@ -15,10 +16,11 @@ const Report = ({ match }) => {
   console.log(scale);
 
   return (
-    <section>
-      <h1>
-        Your weather report in {scale.charAt(0).toUpperCase() + scale.slice(1)}
-      </h1>
+    <Section
+      headingText={`Your weather report in ${scale.charAt(0).toUpperCase() +
+        scale.slice(1)}`}
+      headingLevel="1"
+    >
       <dl>
         {data.map(dataPoint => (
           <Fragment key={dataPoint.city}>
@@ -27,7 +29,7 @@ const Report = ({ match }) => {
           </Fragment>
         ))}
       </dl>
-    </section>
+    </Section>
   );
 };
 

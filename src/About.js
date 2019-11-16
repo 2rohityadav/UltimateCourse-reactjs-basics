@@ -1,8 +1,12 @@
-import React from 'react';
+import React from "react";
+import Section from "./Section";
 
-const About = () => <section>
-    <h1>About this weather app</h1>
-    <p> This application has been built with care and love by your Ultimate Team!</p>
-</section>
+const About = () => (
+  <Section headingText="About this weather app" headingLevel="1" s>
+    <p>
+      This application has been built with care and love by your Ultimate Team!
+    </p>
+  </Section>
+);
 
 export default About;
