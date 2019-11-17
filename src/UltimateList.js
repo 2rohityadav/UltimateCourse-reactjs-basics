@@ -6,9 +6,9 @@ const sourceObj = {
     val4: 'Value 4'
 };
 
-const UltimateList = () => {
-    return (
-        <section>
+export default class UltimateList extends React.Component {
+    render(){
+        return <section>
             <h1>Ultimate Object Listing</h1>
             <ol>
                 {Object.keys(sourceObj).map(key =>
@@ -17,7 +17,5 @@ const UltimateList = () => {
                     </Fragment>)}
             </ol>
         </section>
-    )
+    }
 }
-
-export default UltimateList;

@@ -2,8 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Section from "./Section";
 
-const Home = () => (
-  <Section headingText="Welcome to the weather report" headingLevel="1">
+export default class Home extends React.Component {
+  render(){
+    return <Section headingText="Welcome to the weather report" headingLevel="1">
     <p>
       Please select one of the options below to view weather in your temperature
       scale of choice
@@ -22,6 +23,5 @@ const Home = () => (
       </ul>
     </nav>
   </Section>
-);
-
-export default Home;
+  }
+}

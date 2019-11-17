@@ -13,13 +13,16 @@ import UltimateList from "./UltimateList";
 import UltimateMachine from "./UltimateMachine";
 import Report from "./Report";
 
-const App = () => {
-  const [show, setShow] = useState(true);
+export default class App extends React.Component {
+  state = {
+    show: true
+  }
+  render(){
+    const {show} = this.state;
   const onClickHandler = () => {
-    setShow(s => !s);
+    this.setState({show: !this.state.show});
   };
-  return (
-    <BrowserRouter>
+    return <BrowserRouter>
       <Route path="/" exact component={Home} />
       <Route path="/about" component={About} />
       <Route path="/reports/:scale" component={Report} />
@@ -51,7 +54,6 @@ const App = () => {
         ]}
       />
     </BrowserRouter>
-  );
+  }
 };
 
-export default App;

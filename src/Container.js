@@ -56,10 +56,15 @@ const Container = ({ setShowApp }) => {
         </Fragment>
     )
 };
-
-const Wrapper = () => {
-    const [showApp, setShowApp] = useState(true);
-    return showApp && <Container setShowApp={setShowApp} />
+export default class Wrapper extends React.Component {
+    state = {
+        showApp: true
+    }
+    setShowApp(val){
+        this.setState({...[this.state], showApp: val});
+    }
+    render(){
+        const {showApp} = this.state;
+    return showApp && <Container setShowApp={this.setShowApp} />
+    }
 }
-
-export default Wrapper;
