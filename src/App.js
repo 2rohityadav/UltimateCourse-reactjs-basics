@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import About from "./About";
 import Container from "./Container";
@@ -7,11 +7,11 @@ import Footer from "./Footer";
 import FormContainer from "./Form";
 import Home from "./Home";
 import Random from "./Random";
+import Report from "./Report";
 import Stopwatch from "./StopWatch";
 import UltimateHolidayList from "./UltimateHolidayList";
 import UltimateList from "./UltimateList";
 import UltimateMachine from "./UltimateMachine";
-import Report from "./Report";
 
 export default class App extends React.Component {
   state = {
